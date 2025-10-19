@@ -1,0 +1,424 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>my store</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #37353E;
+    }
+
+    h1 {
+      text-align: center;
+      color: #D3DAD9;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .box {
+      background-color: #4a4a66;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .box:hover {
+      transform: scale(1.05); 
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+      background-color: #555577; 
+    }
+
+    .box img {
+      width: 100%;
+      height: auto; 
+      max-height: 250px;
+      object-fit: contain; 
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .box h3 {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .price {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .box button {
+      background-color: #715A5A;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .box button:hover {
+      background-color: #838707;
+    }
+
+    footer {
+    background-color: #33334d; /* نفس خلفية الموقع الداكنة أو أغمق قليلاً */
+    color: #FFFFFF; /* نص أبيض ناصع */
+    padding: 30px 20px 10px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around; /* توزيع الأعمدة بالتساوي */
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* للسماح للأعمدة بالنزول لأسفل في شاشات الموبايل */
+}
+
+.footer-column {
+    width: 30%; /* عرض كل عمود */
+    margin-bottom: 20px;
+}
+
+/* عناوين الأعمدة */
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #FFFFFF; /* يمكنك جعل هذا اللون هو اللون المميز إذا أردت إبرازه */
+}
+
+/* تنسيق الروابط */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li a {
+    color: #CCCCCC; /* رمادي فاتح مريح */
+    text-decoration: none;
+    line-height: 2.2;
+    transition: color 0.3s;
+    display: block; /* لجعل مساحة الهوفر أكبر */
+}
+
+/* لون الهوفر للروابط */
+.footer-column ul li a:hover {
+    color: #B71C1C; /* اللون الأحمر الداكن المميز */
+    text-decoration: underline;
+}
+
+/* تنسيق الاشتراك في النشرة البريدية */
+.newsletter input[type="email"] {
+    padding: 8px;
+    width: calc(100% - 70px);
+    border: 1px solid #555;
+    background-color: #222233; /* خلفية أغمق لحقل الإدخال */
+    color: #FFFFFF;
+    border-radius: 4px 0 0 4px;
+    margin-top: 10px;
+}
+
+.subscribe-btn {
+    padding: 8px 15px;
+    background-color: #B71C1C; /* اللون المميز */
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+}
+
+.subscribe-btn:hover {
+    background-color: #880E4F; /* لون الهوفر الأغمق */
+}
+
+/* أيقونات التواصل الاجتماعي */
+.social-icons a {
+    color: #FFFFFF;
+    font-size: 20px;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #B71C1C; /* لون الهوفر المميز */
+}
+
+/* تفاصيل الاتصال */
+.contact-detail {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* حقوق النشر */
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 15px;
+    border-top: 1px solid #555577; /* خط فاصل خفيف */
+}
+
+.footer-bottom p {
+    font-size: 12px;
+    color: #AAAAAA;
+}
+
+/* --- تعديلات للموبايل (اختياري) --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* الأعمدة تصبح فوق بعضها */
+        text-align: center;
+    }
+    .footer-column {
+        width: 100%; /* كل عمود يأخذ عرض الشاشة كاملاً */
+    }
+    .footer-column ul {
+        margin-bottom: 20px;
+    }
+    .newsletter input[type="email"] {
+        width: 70%;
+        border-radius: 4px;
+    }
+    .subscribe-btn {
+         border-radius: 4px;
+         margin-top: 10px;
+    }
+}
+  </style>
+ 
+
+</head>
+
+<body>
+  <h1 style="padding-top: 65px;">Men's Shoes</h1>
+
+  <header style="background-color: #44444E; padding: 10px; 
+                position: fixed; top: 0; left: 0; width: 100%; 
+                z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+  <nav style="display: flex; justify-content: space-between; align-items: center;">
+    <a href="home.html" style="font-size: 24px; font-weight: bold; text-decoration: none; color: #D3DAD9;">
+      Shoes Store
+    </a>
+
+    <div style="flex: 1; text-align: center;">
+      <input type="text" placeholder="search here" 
+             style="width: 50%; padding: 8px; border-radius: 20px; border: 1px solid #ccc; text-align: right;">
+    </div>
+
+    <div>
+      <a href="login.html" style="text-decoration: none; color: black; font-size: 20px; margin-right: 10px;">
+  <i class="fa-solid fa-user"></i>
+</a>
+
+      <a href="mens.html" style="margin-right: 15px; text-decoration: none; color: #D3DAD9; margin-right: 10px;">men</a>
+      <a href="women.html" style="margin-right: 15px; text-decoration: none; color: #D3DAD9; margin-right: 10px;">women</a>
+      <a href="contact.html" style="text-decoration: none; color: #D3DAD9; margin-right: 10px;">contact us</a>
+    </div>
+  </nav>
+</header>
+
+  <div class="container">
+        <!-- المنتج 1 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="dior b22.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">dior b22</h3>
+      <span class="price">2000L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 2 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 1 travis scottjpg.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 1 travis scott</h3>
+      <span class="price">1700L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 3 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 1 low.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jodan 1 low</h3>
+      <span class="price">1800L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 4 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 7.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 7</h3>
+      <span class="price">1900L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 5 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 11.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 11</h3>
+      <span class="price">1500L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+    
+    <!-- المنتج 6 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="air force1.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air force 1</h3>
+      <span class="price">1300L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 7 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="air max97.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air max 97</h3>
+      <span class="price">1600L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 8 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="nike blazer.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">nike blazer</h3>
+      <span class="price">1800L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 9 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="nike sb.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">nike SB</h3>
+      <span class="price">1400L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 10 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 4.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 4</h3>
+      <span class="price">1500L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 11 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="nike nocta.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">nike nocta</h3>
+      <span class="price">2100L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 12 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 13.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 13</h3>
+      <span class="price">2300L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 13 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan 6.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 6</h3>
+      <span class="price">1500L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+    <!-- المنتج 14 -->
+    <div class="box" style=" padding: 15px; border-radius: 10px; width: 200px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <img src="jordan3.jpg" alt="حذاء جديد"  style="width: 100%; height: 180px; object-fit: cover; border-radius: 10px;">
+      <h3 style="font-size: 16px; margin: 10px 0;">air jordan 3</h3>
+      <span class="price">1900L.E</span>
+      <button style=" border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: bold;">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-container">
+        
+        <div class="footer-column links">
+            <h3>روابط سريعة</h3>
+            <ul>
+                <li><a href="home.html">الرئيسية</a></li>
+                <li><a href="mens.html">الأحذية الرجالية</a></li>
+                <li><a href="women.html">الأحذية النسائية</a></li>
+                <li><a href="#">اتصل بنا</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column info">
+            <h3>معلومات المتجر</h3>
+            <ul>
+                <li><a href="#">سياسة الإرجاع</a></li>
+                <li><a href="#">الشحن والتوصيل</a></li>
+                <li><a href="#">الأسئلة الشائعة (FAQ)</a></li>
+                <li><a href="#">عن المتجر</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-column social">
+            <h3>تابعنا</h3>
+            <div class="social-icons">
+                <a href="#" class="social-icon">F</a>
+                <a href="#" class="social-icon">I</a>
+                <a href="#" class="social-icon">X</a>
+            </div>
+            
+            <div class="newsletter">
+                <input type="text" placeholder="اترك لنا تعليق">
+                <button class="subscribe-btn">ارسال</button>
+            </div>
+            
+            <p class="contact-detail">للاتصال:01101734685</p>
+        </div>
+        
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 SHOES. جميع الحقوق محفوظة.</p>
+    </div>
+</footer>
+</body>
+</html>
